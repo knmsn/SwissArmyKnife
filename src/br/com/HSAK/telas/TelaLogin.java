@@ -9,55 +9,60 @@ import java.sql.*;
 
 import br.com.HSAK.dal.ModuloConexao;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gustavo
  */
 public class TelaLogin extends javax.swing.JFrame {
+
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
-    public void logar(){
-        
+
+    public void logar() {
+
         // Criando SQL
         String sql = "SELECT * FROM usuarios WHERE usuario=? AND senha=?";
-        try{
-        // Armazenando a resposta dentro da variavel pst    
-         pst = conexao.prepareStatement(sql);
-         
-         // Pegando texto de dentro das labels 
-         pst.setString(1, txtUsuario.getText());
-         pst.setString(2, txtSenha.getText());
-         
-         rs = pst.executeQuery();
-         
-         if (rs.next()){
-             JOptionPane.showMessageDialog(null, "Logado");
-         }
-         else{
-             JOptionPane.showMessageDialog(null, "Usuario ou senha invalidos");
-         }
-         
-         
-        }catch (Exception e){
+        try {
+            // Armazenando a resposta dentro da variavel pst    
+            pst = conexao.prepareStatement(sql);
+
+            // Pegando texto de dentro das labels 
+            pst.setString(1, txtUsuario.getText());
+            pst.setString(2, txtSenha.getText());
+
+            rs = pst.executeQuery();
             
+            // O mesmo que if (rs.next() == true) {
+            if (rs.next()) {
+                
+                // Mostra a tela principal, de menu.
+                TelaPrincipal principal = new TelaPrincipal();
+                principal.setVisible(true);
+                // Fechado a tela atual
+                this.dispose();
+                conexao.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario ou senha invalidos");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro Desconhecido");
         }
-        
+
     }
 
     /**
      * Creates new form TelaLogin
      */
-    
     public TelaLogin() {
         initComponents();
         conexao = ModuloConexao.conector();
-        if (conexao != null){
+        if (conexao != null) {
             lblStatus.setText("<html>Status conexao banco de dados: <font color='Green'>Conectado</font></html>");
-        }
-        else{
-           lblStatus.setText("<html>Status conexao banco de dados: <font color='Red'>Nao conectado</font></html>");
+        } else {
+            lblStatus.setText("<html>Status conexao banco de dados: <font color='Red'>Nao conectado</font></html>");
         }
     }
 
@@ -151,7 +156,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-       logar();
+        logar();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
