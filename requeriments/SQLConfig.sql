@@ -22,9 +22,12 @@ INSERT INTO usuarios (usuario,senha,nivel_permissao) values ("root","123","1");
     PRIMARY KEY (id_aplicacaoWEB )
   ) CHARSET = utf8; 
   
-insert into aplicacoesWEB (nome,url) values ("Google","google.com");
+Maldita seguranca do facebook
+insert into aplicacoesWEB (nome,url) values ("Facebook","https://facebook.com");
   */
-insert into aplicacoesWEB (nome,url) values ("Facebook","facebook.com");
-insert into aplicacoesWEB (nome,url) values ("Gmail","gmail.com");
-insert into aplicacoesWEB (nome,url) values ("YouTube","youtube.com");
+  truncate table aplicacoesWEB;
+insert into aplicacoesWEB (nome,url) values ("Teste","http://alkdjou01283.com.br/");
+insert into aplicacoesWEB (nome,url) values ("Google","https://google.com");
+insert into aplicacoesWEB (nome,url) values ("Gmail","https://gmail.com");
+insert into aplicacoesWEB (nome,url) values ("YouTube","https://youtube.com");
   SELECT nome,url FROM aplicacoesWEB;
