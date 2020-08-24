@@ -93,7 +93,7 @@
                 <Column editable="false" title="Nome" type="java.lang.Object"/>
                 <Column editable="false" title="Url" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
-                <Column editable="false" title="Hora verificacao" type="java.lang.Object"/>
+                <Column editable="false" title="Data/Hora" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

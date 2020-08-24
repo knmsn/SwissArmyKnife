@@ -6,7 +6,7 @@
 package br.com.HSAK.telas;
 import javax.swing.table.*;
 import java.sql.*;
-
+import java.util.Calendar;
 import br.com.HSAK.dal.ModuloConexao;
 import javax.swing.JOptionPane;
 /**
@@ -31,7 +31,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             rs = pst.executeQuery();
  while (rs.next()) {
-            hsaktableInicio.addRow(new Object[]{rs.getString("nome"), rs.getString("url"), "Status", "Hora"});
+     
+Calendar data = Calendar.getInstance();
+int hora = data.get(Calendar.HOUR_OF_DAY); 
+int min = data.get(Calendar.MINUTE);
+int seg = data.get(Calendar.SECOND);
+
+            hsaktableInicio.addRow(new Object[]{rs.getString("nome"), rs.getString("url"), "Status", hora+":"+min+":"+seg});
 }
 
              
@@ -83,7 +89,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Url", "Status", "Hora verificacao"
+                "Nome", "Url", "Status", "Data/Hora"
             }
         ) {
             boolean[] canEdit = new boolean [] {
