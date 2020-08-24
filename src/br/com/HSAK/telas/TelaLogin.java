@@ -24,6 +24,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         // Criando SQL
         String sql = "SELECT * FROM usuarios WHERE usuario=? AND senha=?";
+        
         try {
             // Armazenando a resposta dentro da variavel pst    
             pst = conexao.prepareStatement(sql);
@@ -37,7 +38,7 @@ public class TelaLogin extends javax.swing.JFrame {
             // O mesmo que if (rs.next() == true) {
             if (rs.next()) {
                 
-                // Mostra a tela principal, de menu.
+                
                 TelaPrincipal principal = new TelaPrincipal();
                 principal.setVisible(true);
                 // Fechado a tela atual
