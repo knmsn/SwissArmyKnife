@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -26,8 +27,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public void vrf() {
+    public void verifyWEB() {
         DefaultTableModel hsaktableInicio = (DefaultTableModel) jTInicio.getModel();
+
+        hsaktableInicio.setRowCount(0);
 
         // Criando SQL para listar todas as aplicacoes WEB
         String sql = "SELECT nome,url FROM aplicacoesWEB;";
@@ -51,18 +54,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     doc = Jsoup.connect(rs.getString("url")).get();
                     String html = doc.html().replaceAll("<br>", "");
                     // Se houver html na pagina, logo nao e erro.
-                    if(html.contains("<body")) {
-                        
+                    if (html.contains("<body")) {
+
                         // Se houver HTML NA PAGINA + ALGAR em algum lugar, quer dizer que esta fora do ar por conta da protecao da algar a sites sem dominio.
-                      if(html.contains("nodomain.ctbc.com.br")) {
-         
-                        hsaktableInicio.addRow(new Object[]{rs.getString("nome"), rs.getString("url"), "Site Offline", hora + ":" + min + ":" + seg});
-                        }else{
-                             hsaktableInicio.addRow(new Object[]{rs.getString("nome"), rs.getString("url"), "Site Ativo", hora + ":" + min + ":" + seg});
+                        if (html.contains("nodomain.ctbc.com.br")) {
+
+                            hsaktableInicio.addRow(new Object[]{rs.getString("nome"), rs.getString("url"), "Site Offline", hora + ":" + min + ":" + seg});
+                        } else {
+                            hsaktableInicio.addRow(new Object[]{rs.getString("nome"), rs.getString("url"), "Site Ativo", hora + ":" + min + ":" + seg});
                         }
 
-                    }
-                    else{
+                    } else {
                         hsaktableInicio.addRow(new Object[]{rs.getString("nome"), rs.getString("url"), "<font color='Red'> Site Offline</font>", hora + ":" + min + ":" + seg});
                     }
 
@@ -75,7 +77,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "3");
         }
-        int i = 0;
 
     }
 
@@ -88,7 +89,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // Iniciando a funcao padrao para criar os componentes na tela
         initComponents();
         // Iniciando funcao para popular tabela inicial.
-        vrf();
+        verifyWEB();
 
     }
 
@@ -103,6 +104,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTInicio = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -135,6 +139,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jTInicio.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jButton1.setText("Atualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Apagar Registro");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Criar novo registro");
+
         jMenu3.setText("Monitoramento");
 
         jMenuItem1.setText("Dominio");
@@ -158,20 +178,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        setBounds(0, 0, 906, 515);
+        setBounds(0, 0, 884, 534);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        verifyWEB();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +251,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
