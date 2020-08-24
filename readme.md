@@ -6,13 +6,18 @@ O objetivo deste repositório é ajudar a comunidade a se desenvolver , além de
 
 ## Versões
 
-**24/08/2020**
+**23/08/2020**
 
 - [x] Criacao do banco de dados do projeto [MYSQL / MYSQLFILE]
 - [x] Criacao da tabela de usuarios [MYSQL / MYSQLFILE]
 - [x] Criacao da tabela de aplicacoes WEB a serem monitoradas [MYSQL / MYSQLFILE]
 - [x] Sistema de login [ JAVA / NETBEANS ]
 - [x] Sistema de verificacao de integridade de aplicacoes WEB cadastradas no banco de dados na tabela da pagina inicial por web scrapping [ JAVA / NETBEANS ]
+
+**24/08/2020**
+
+- [x] Adicao de area "Sobre" , com informacoes sobre o projeto ao menu.
+
 
 ## Ideias para possiveis atualizacoes 
 
