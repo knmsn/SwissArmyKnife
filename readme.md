@@ -1,4 +1,4 @@
-# HISOKA Swiss Army Knife
+# Swiss Army Knife
 
 Neste repositório, trago o código fonte de software de monitoramento de aplicacoes WEB, Dominios, alem de tambem ter opcoes de Whois e tracer ip.
 O objetivo deste repositório é ajudar a comunidade a se desenvolver , além de manter afiada minhas habilidades desenvolvendo usando a linguagem Python.
@@ -17,14 +17,3 @@ O objetivo deste repositório é ajudar a comunidade a se desenvolver , além de
 **24/08/2020**
 
 - [x] Adicao de area "Sobre" , com informacoes sobre o projeto ao menu.
-
-
-## Ideias para possiveis atualizacoes 
-
-- [ ] Funcao CRUD - Aplicacoes WEB: Criar, editar e excluir aplicacoes para serem monitoradas
-- [ ] Verificacao de dominioco atraves de ping no seu ip, listando em tabela na area de monitoramento de dominios
-- [ ] Funcao CRUD - Dominios WEB: Criar, editar e excluir dominios a serem monitorados
-
-
-## Documentacao e explicacao da versao atual:
-[Artigo Linkedin](#)
