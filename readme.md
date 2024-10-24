@@ -1,19 +1,17 @@
 # Web Monitor
 
-Neste repositório, trago o código fonte de software de monitoramento de aplicacoes WEB, Dominios, alem de tambem ter opcoes de Whois e tracer ip.
-O objetivo deste repositório é ajudar a comunidade a se desenvolver , além de manter afiada minhas habilidades desenvolvendo usando a linguagem Python.
+In this repository, I present the source code for software that monitors web applications and domains, as well as provides options for Whois and IP tracing. The goal of this repository is to help the community grow while also keeping my skills sharp by developing in Python.
 
+## Versions
 
-## Versões
+**08/23/2020**
 
-**23/08/2020**
+- [x] Creation of the project's database [MYSQL / MYSQLFILE]
+- [x] Creation of the users table [MYSQL / MYSQLFILE]
+- [x] Creation of the web applications table to be monitored [MYSQL / MYSQLFILE]
+- [x] Login system [JAVA / NETBEANS]
+- [x] Web application integrity verification system for registered applications in the database, displayed on the homepage using web scraping [JAVA / NETBEANS]
 
-- [x] Criacao do banco de dados do projeto [MYSQL / MYSQLFILE]
-- [x] Criacao da tabela de usuarios [MYSQL / MYSQLFILE]
-- [x] Criacao da tabela de aplicacoes WEB a serem monitoradas [MYSQL / MYSQLFILE]
-- [x] Sistema de login [ JAVA / NETBEANS ]
-- [x] Sistema de verificacao de integridade de aplicacoes WEB cadastradas no banco de dados na tabela da pagina inicial por web scrapping [ JAVA / NETBEANS ]
+**08/24/2020**
 
-**24/08/2020**
-
-- [x] Adicao de area "Sobre" , com informacoes sobre o projeto ao menu.
+- [x] Added "About" section with project information to the menu.
